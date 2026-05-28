@@ -23,29 +23,13 @@ public class MyVaccineAppDbContext : IdentityDbContext<IdentityUser>
     {
         base.OnModelCreating(modelBuilder);
 
-        //modelBuilder.Entity<IdentityUser>()
-        //    .HasKey(u => u.Id);
-
-        //modelBuilder.Entity<IdentityRole>()
-        //    .HasKey(r => r.Id);
-
-        //modelBuilder.Entity<IdentityUserRole<string>>()
-        //    .HasKey(r => new { r.UserId, r.RoleId });
-
-        //modelBuilder.Entity<IdentityUserLogin<string>>()
-        //    .HasKey(l => new { l.LoginProvider, l.ProviderKey });
-
         modelBuilder.Entity<User>(entity =>
         {
-            entity.Property(u => u.UserName)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(u => u.FirstName)
+               .IsRequired()
+               .HasMaxLength(255);
 
-            entity.Property(u => u.Email)
-                .IsRequired()
-                .HasMaxLength(255);
-
-            entity.Property(u => u.Password)
+            entity.Property(u => u.LastName)
                 .IsRequired()
                 .HasMaxLength(255);
         });
