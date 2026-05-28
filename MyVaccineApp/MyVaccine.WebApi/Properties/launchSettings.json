@@ -14,10 +14,11 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "MY_VACCINE_CONNECTION_STRING": "@\"Server=LAPTOP-343I6EK6;Database=MyVaccineAppDb;Integrated Security=True;TrustServerCertificate=True;\""
-      },
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "MY_VACCINE_CONNECTION_STRING": "Server=LAPTOP-343I6EK6;Database=MyVaccineAppDb;Integrated Security=True;TrustServerCertificate=True;",
+            "JWT_KEY": "GA#%&%&#$HgfagfdgagdfgjdfdsadvGF%"
+        },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7075;http://localhost:5258"
     },
