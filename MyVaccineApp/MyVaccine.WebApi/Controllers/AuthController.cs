@@ -1,9 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using MyVaccine.WebApi.Dtos;
 using MyVaccine.WebApi.Literals;
@@ -42,6 +44,22 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
     {
         var response = await _userService.Login(model);
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+        else
+        {
+            return Unauthorized(response);
+        }
+    }
+
+    [Authorize]
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken()
+    {
+        var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        var response = await _userService.RefreshToken(claimsIdentity.Name);
         if (response.IsSuccess)
         {
             return Ok(response);

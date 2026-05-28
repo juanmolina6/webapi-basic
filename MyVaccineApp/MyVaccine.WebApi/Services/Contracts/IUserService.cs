@@ -6,6 +6,7 @@ namespace MyVaccine.WebApi.Services.Contracts
     {
         Task<AuthResponseDto> AddUserAsync(RegisterRequetDto request);
         Task<AuthResponseDto> Login(LoginRequestDto request);
+        Task<AuthResponseDto> RefreshToken(string email);
 
     }
 }
